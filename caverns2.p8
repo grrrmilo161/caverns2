@@ -546,10 +546,14 @@ end
 
 player_spawn={
 	init=function(this)
+		if lvl_id==13 then
+			destroy_object(this)
+			init_object(player,this.x,this.y)
+		end
 		sfx"4"
 		this.spr=3
 		this.target=this.y
-		--this.y=min(this.y+48,lvl_ph)
+		this.y=min(this.y+48,lvl_ph)
 		cam_x,cam_y=mid(this.x+4,64,lvl_pw-64),mid(this.y,64,lvl_ph-64)
 		this.spd.y=-4
 		this.state=0
@@ -1690,4 +1694,3 @@ __music__
 00 41424344
 01 383a3c44
 02 393b3c44
-
